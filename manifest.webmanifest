@@ -1,7 +1,7 @@
 {
-  "name": "Simple AI",
-  "short_name": "Simple AI",
-  "description": "Simple AI chat assistant.",
+  "name": "the AI",
+  "short_name": "the AI",
+  "description": "the AI chat assistant.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
