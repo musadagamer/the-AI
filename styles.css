@@ -585,15 +585,33 @@ button {
   transform: translateX(280px);
 }
 
-/* match sidebar width */
-@media (max-width: 760px) {
-  .app-shell.sidebar-open #sidebarButton {
-    transform: translateX(280px);
-  }
-}
 body.sidebar-open #sidebarButton {
   transform: translateX(280px);
 }
 #sidebarButton {
   transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* ===== SIDEBAR BUTTON FOLLOW FIX (WORKING VERSION) ===== */
+
+.topbar {
+  position: relative;
+}
+
+/* smooth movement */
+#sidebarButton {
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  position: relative;
+}
+
+/* when sidebar opens, push button right */
+body.sidebar-open #sidebarButton {
+  transform: translateX(280px);
+}
+
+/* mobile stays same width */
+@media (max-width: 760px) {
+  body.sidebar-open #sidebarButton {
+    transform: translateX(280px);
+  }
 }
