@@ -73,8 +73,8 @@ function updatePasswordGate() {
 }
 
 els.sidebarButton.addEventListener("click", () => {
-  els.sidebar.classList.toggle("closed");
-  document.body.classList.toggle("sidebar-open");
+  const isOpen = document.body.classList.toggle("sidebar-open");
+  els.sidebar.classList.toggle("closed", !isOpen);
 });
 
   els.newChatButton.addEventListener("click", () => {
