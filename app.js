@@ -620,3 +620,15 @@ dismissBtn.addEventListener("click", (e) => {
   e.preventDefault();
   installToast.hidden = true;
 });
+window.addEventListener("load", () => {
+  const toast = document.getElementById("installToast");
+  const btn = document.getElementById("dismissInstall");
+
+  if (!toast || !btn) return;
+
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toast.hidden = true;
+    toast.style.display = "none";
+  });
+});
