@@ -559,7 +559,6 @@ button {
 }
 #installToast {
   outline: 3px solid red !important;
-  background: yellow !important;
 }
 
 #dismissInstall {
