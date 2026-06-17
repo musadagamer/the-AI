@@ -73,13 +73,8 @@ function updatePasswordGate() {
 }
 
 els.sidebarButton.addEventListener("click", () => {
-  const isClosed = els.sidebar.classList.toggle("closed");
-
-  if (isClosed) {
-    document.getElementById("app").classList.remove("sidebar-open");
-  } else {
-    document.getElementById("app").classList.add("sidebar-open");
-  }
+  els.sidebar.classList.toggle("closed");
+  document.body.classList.toggle("sidebar-open");
 });
 
   els.newChatButton.addEventListener("click", () => {
