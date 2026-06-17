@@ -488,6 +488,7 @@ function setupInstallPrompt() {
   window.addEventListener("appinstalled", () => {
     deferredPrompt = null;
     els.installToast.hidden = true;
+    localStorage.setItem(DISMISSED_INSTALL_KEY, "1");
   });
 }
 
@@ -496,18 +497,30 @@ async function showInstall() {
     await installApp();
     return;
   }
+  els.installToast.querySelector("span").textContent = isIos()
+    ? "On iPhone/iPad: tap the Share icon, then \"Add to Home Screen.\""
+    : "Use your browser menu (⋮ or ...) and choose \"Install app\" or \"Add to Home Screen.\"";
   els.installToast.hidden = false;
 }
 
 async function installApp() {
   if (!deferredPrompt) {
-    els.installToast.querySelector("span").textContent = "Use your browser menu to install this app.";
+    els.installToast.querySelector("span").textContent = isIos()
+      ? "On iPhone/iPad: tap the Share icon, then \"Add to Home Screen.\""
+      : "Use your browser menu (⋮ or ...) and choose \"Install app\" or \"Add to Home Screen.\"";
     return;
   }
   deferredPrompt.prompt();
-  await deferredPrompt.userChoice;
+  const choice = await deferredPrompt.userChoice;
   deferredPrompt = null;
   els.installToast.hidden = true;
+  if (choice?.outcome !== "accepted") {
+    localStorage.setItem(DISMISSED_INSTALL_KEY, "1");
+  }
+}
+
+function isIos() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent);
 }
 
 function registerServiceWorker() {
