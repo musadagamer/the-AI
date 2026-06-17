@@ -613,3 +613,10 @@ function escapeHtml(value) {
     "'": "&#039;"
   }[char]));
 }
+const installToast = document.getElementById("installToast");
+const dismissBtn = document.getElementById("dismissInstall");
+
+dismissBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  installToast.hidden = true;
+});
