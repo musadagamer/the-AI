@@ -557,3 +557,12 @@ button {
     padding-top: 18px;
   }
 }
+#installToast {
+  outline: 3px solid red !important;
+  background: yellow !important;
+}
+
+#dismissInstall {
+  outline: 3px solid blue !important;
+  background: green !important;
+}
